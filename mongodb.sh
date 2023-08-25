@@ -43,8 +43,22 @@ cp mongo.repo /etc/yum.repos.d/mongo.repo &>>$LOGFILE
 
 VALIDATE $? "copied mongodb repo into yum.repos.d"
 
-yum install mongodb-org -y
+yum install mongodb-org -y &>>$LOGFILE
 
-systemctl enable mongod
+VALIDATE $? "Installing MongoDB"
 
-systemctl start mongod
+systemctl enable mongod &>>$LOGFILE
+
+VALIDATE $? "Enabling MongoDB"
+
+systemctl start mongod &>>$LOGFILE
+
+VALIDATE $? "Starting MongoDB"
+
+sed -i 's/127.0.0.1/0.0.0.0/' /etc/mongod.conf &>>$LOGFILE
+
+VALIDATE $? "edited Mongo Conf"
+
+systemctl restart mongod &>>$LOGFILE
+
+VALIDATE $? "Restarting MongoDB"
