@@ -53,7 +53,7 @@ VALIDATE $? "packaging shipping app"
 
 mv target/shipping-1.0.jar shipping.jar &>>$LOGFILE
 
-VALIDATE $? "renaming shipping jar"
+VALIDATE $? "Renaming shipping jar"
 
 cp /home/centos/roboshop-shell/shipping.service /etc/systemd/system/shipping.service &>>$LOGFILE
 
