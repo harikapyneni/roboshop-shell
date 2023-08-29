@@ -63,7 +63,7 @@ else
 fi
 }
 
-curl -o /tmp/user.zip https://roboshop-builds.s3.amazonaws.com/user.zip &>>$LOGFILE
+curl -o /tmp/user.zip https://roboshop-artifacts.s3.amazonaws.com/user.zip &>>$LOGFILE
 
 VALIDATE $? "downloading user artifact"
 

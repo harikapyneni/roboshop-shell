@@ -35,7 +35,7 @@ useradd roboshop &>>$LOGFILE
 
 mkdir /app  &>>$LOGFILE
 
-curl -L -o /tmp/payment.zip https://roboshop-builds.s3.amazonaws.com/payment.zip &>>$LOGFILE
+curl -L -o /tmp/payment.zip https://roboshop-artifacts.s3.amazonaws.com/payment.zip &>>$LOGFILE
 
 VALIDATE $? "Downloading artifact"
 
