@@ -102,6 +102,7 @@ else
     echo -e "$G /app directory already present so skipping now $N"
 fi
 }
+
 curl -o /tmp/catalogue.zip https://roboshop-artifacts.s3.amazonaws.com/catalogue.zip &>>$LOGFILE
 
 VALIDATE $? "downloading catalogue artifact"

@@ -31,9 +31,33 @@ yum install maven -y &>>$LOGFILE
 
 VALIDATE $? "Installing Maven"
 
-useradd roboshop &>>$LOGFILE
+#once the user is created, if you run this script 2nd time
+# this command will defnitely fail
+# IMPROVEMENT: first check the user already exist or not, if not exist then create
 
-mkdir /app &>>$LOGFILE
+USER_ROBOSHOP=$(id roboshop)
+
+if [ $? -ne 0 ];
+then
+    echo -e "$Y...USER roboshop is not present so creating now..$N"
+    useradd roboshop &>>$LOGFILE
+else
+    echo -e "$G...USER roboshop is already present so skipping now.$N"
+fi
+
+#checking the user app directory 
+#write a condition to check directory already exist or not
+
+VALIDATE_APP_DIR=$(cd /app)
+{
+if [ $? -ne 0 ];
+then
+    echo -e " $Y /app directory not there so creating now $N"
+    mkdir /app &>>$LOGFILE  
+else
+    echo -e "$G /app directory already present so skipping now $N"
+fi
+}
 
 curl -L -o /tmp/shipping.zip https://roboshop-artifacts.s3.amazonaws.com/shipping.zip &>>$LOGFILE
 
