@@ -24,6 +24,8 @@ do
    
     echo "created $i instance: $IP_ADDRESS"
 
+# in aws below command- "Action": "CREATE" when you're creating or "UPDATE" when you do any updates 
+
     aws route53 change-resource-record-sets --hosted-zone-id Z05806891LJZ0TR0VRIAI --change-batch '
     {
             "Changes": [{
